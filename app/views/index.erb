@@ -1,0 +1,12 @@
+<div hidden class="register_div"></div>
+<div hidden class="login_div"></div>
+
+<h1> Welcome </h1>
+ <% if session[:user_id] %>
+   <h2>Hi <%= user.username %>!</h2>
+  <a href="/questions/new"><button>Ask a Question</button></a><br>
+ <% end %>
+
+<% questions.each do |question| %>
+  <a href="/questions/<%= question.id %>"><%= question.title %></a><br>
+<% end %>

@@ -1,0 +1,25 @@
+<div id="answer_vote">
+    <% if session[:user_id] %>
+      <a class='upvote_answer' href="/answers/<%= new_answer.id %>/votes/new">upvote</a>
+      <a class='downvote_answer' href="/answers/<%= new_answer.id %>/votes/delete">downvote</a><br>
+    <% end %>
+    <div id="answer_vote_tally"><%= new_answer.votes.count %></div>
+</div>
+  <%= new_answer.content %> <br>
+
+    <a href="/answers/<%=new_answer.id%>/comments/new"><button>Comment</button></a><br>
+
+    <% new_answer.comments.each do |comment|%>
+      <ul>
+        <li><%= comment.content %> </li>
+        <div id="comment_vote">
+          <% if session[:user_id] %>
+            <a class='upvote_comment' href="/comments/<%= comment.id %>/votes/new">upvote</a>
+            <a class='downvote_comment' href="/comments/<%= comment.id %>/votes/delete">downvote</a><br>
+          <% end %>
+          <div id="comment_vote_tally"><%= comment.votes.count %></div>
+        </div>
+      </ul>
+
+  <% end %>
+<hr>

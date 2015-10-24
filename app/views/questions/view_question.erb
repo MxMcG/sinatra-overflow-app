@@ -1,0 +1,43 @@
+ \<h1>Question</h1>
+<h2><%= question.title %></h2>
+  <div id="question_vote">
+    <% if session[:user_id] %>
+      <a class='upvote_question' href="/questions/<%= question.id %>/votes/new">upvote</a>
+      <a class='downvote_question' href="/questions/<%= question.id %>/votes/delete">downvote</a><br>
+    <% end %>
+    <div id="question_vote_tally"><%= question.votes.count %></div>
+  </div>
+
+<%= question.body %><hr>
+<a class="answer_button" href="/questions/<%= question.id %>/answers/new"><button>Post an answer</button></a>
+<p class="answer-form-here"><p>
+
+<h2>Answers</h2>
+<hr>
+<% question.answers.each do |answer| %>
+  <div id="answer_vote">
+    <% if session[:user_id] %>
+      <a class='upvote_answer' href="/answers/<%= answer.id %>/votes/new">upvote</a>
+      <a class='downvote_answer' href="/answers/<%= answer.id %>/votes/delete">downvote</a><br>
+    <% end %>
+    <div id ="<%=answer.id%>-vote-tally"><%= answer.votes.count %></div>
+  </div>
+  <%= answer.content %> <br>
+
+    <a href="/answers/<%=answer.id%>/comments/new"><button>Comment</button></a><br>
+
+    <% answer.comments.each do |comment|%>
+      <ul>
+        <li><%= comment.content %> </li>
+        <div id="comment_vote">
+          <% if session[:user_id] %>
+            <a class='upvote_comment' href="/comments/<%= comment.id %>/votes/new">upvote</a>
+            <a class='downvote_comment' href="/comments/<%= comment.id %>/votes/delete">downvote</a><br>
+          <% end %>
+          <div id="comment_vote_tally"><%= comment.votes.count %></div>
+        </div>
+      </ul>
+<tag></tag>
+  <% end %>
+  <hr>
+<% end %>

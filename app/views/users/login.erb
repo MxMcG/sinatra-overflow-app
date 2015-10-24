@@ -1,0 +1,8 @@
+<% if @login_error %>
+  <div><%= @login_error %></div>
+<% end %>
+<form method="post" action="/users/login">
+  <input type="text" name="username" placeholder="Username">
+  <input type="password" name="password" placeholder="Password">
+  <input type="submit" value="Login">
+</form>

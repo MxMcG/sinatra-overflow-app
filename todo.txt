@@ -1,0 +1,6 @@
+todo.txt
+
+1. ajax it
+2. style it
+3. add validations (login, register)
+4. add vote icon/logic

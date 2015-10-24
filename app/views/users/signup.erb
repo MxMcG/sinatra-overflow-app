@@ -1,0 +1,12 @@
+
+<form method="post" action="/users/signup">
+  <% if @user.errors[:username].any? %>
+    <div style="color: red;"><%= @user.errors[:username].first %></div>
+  <% end %>
+    <input type="text" name="new_user[username]" placeholder="Username">
+  <% if @user.errors[:password].any? %>
+    <div style="color: red;"><%= @user.errors[:password].first %></div>
+  <% end %>
+    <input type="password" name="new_user[password]" placeholder="Password">
+    <input type="submit" value="Register">
+</form>
